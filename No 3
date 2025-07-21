@@ -1,0 +1,16 @@
+The python-nmap module is a Python wrapper for the Nmap tool. It allows Python programs to:
+
+    Launch Nmap scans (scanner.scan())
+
+    Parse the scan results (like open ports, OS detection)
+
+    Access detailed information using dictionaries
+
+Useful methods:
+
+    scanner.scan(hosts, ports)
+
+    scanner.all_hosts()
+
+    scanner[host]['tcp'][port]['state']
+

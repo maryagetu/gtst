@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Usage: ./nse_scan.sh <IP> <NSE script>
+# Example: ./nse_scan.sh 192.168.1.1 http-enum
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <IP> <NSE script>"
+    exit 1
+fi
+
+IP="$1"
+SCRIPT="$2"
+
+echo "Running Nmap NSE Script Scan on $IP using script $SCRIPT..."
+nmap -sV --script="$SCRIPT" "$IP"
+
+
+ we can Make it executable:
+
+chmod +x nse_scan.sh
+
+ and also we can Run it:
+
+./nse_scan.sh 192.168.1.1 http-enum

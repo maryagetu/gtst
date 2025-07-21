@@ -1,0 +1,25 @@
+import socket
+import os
+
+def get_gateway_ip():
+    # Only works on Linux
+    with os.popen("ip route | grep default") as route:
+        output = route.read()
+    gateway = output.split()[2]
+    return gateway
+
+def classify_ip(ip):
+    first_octet = int(ip.split('.')[0])
+    if 1 <= first_octet <= 126:
+        return "Class A"
+    elif 128 <= first_octet <= 191:
+        return "Class B"
+    elif 192 <= first_octet <= 223:
+        return "Class C"
+    else:
+        return "Unknown class"
+
+gateway = get_gateway_ip()
+ip_class = classify_ip(gateway)
+print(f"Gateway IP: {gateway}")
+print(f"IP Class: {ip_class}")
